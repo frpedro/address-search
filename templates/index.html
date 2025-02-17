@@ -1,28 +1,40 @@
-
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CEPConsult</title>   
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles/css/style.css') }}">
+    <!-- Link para arquivo CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/css/styles.css') }}">
 </head>
 <body>
  
-    
-    <div class="box">
-        <h1>CEPConsult</h1>
-        <form method="POST">
+    <!-- box principal, com formulário para preenchimento -->
+    <div class="form-box">
+        <h1>CEPConsult</h1> <!-- título -->
+
+        <form method="POST"> <!-- formulário -->
+
+            <!-- rótulo e campo de entrada para o CEP -->
             <label for="cep">CEP:</label>
             <input type="text" id="cep" name="cep" placeholder="Insira seu CEP" required autocomplete="off">
             <br><br>
+            
+            <!-- rótulo e campo de entrada para o número da casa -->
             <label for="numero">Número da Casa:</label>
             <input type="number" id="numero" name="numero" placeholder="Insira o número da casa" required autocomplete="off">
             <br><br>
+
+            <!-- botão de envio do formulário -->
             <button type="submit">Consultar</button>
+            
         </form>
+
     </div>
 
-    <div class="resultado">
+    <!-- box que exibe as informações requisitadas -->
+    <div class="result-box">
+
+        <!-- caso a requisição tenha sucesso, exibe as informações -->
         {% if rua %}
             <h2>Endereço encontrado:</h2>
             <p>Rua: {{ rua }}</p>
@@ -31,12 +43,13 @@
             <p>Cidade: {{ cidade }}</p>
             <p>Estado: {{ estado }}</p>
             <p>CEP: {{ cep1 }}</p>
-
         {% endif %}
-
+        
+        <!-- caso ocorra um erro durante a requisição, exibe a mensagem de erro em vermelho -->
         {% if error %}
             <p class ="erro" style="color: red;">{{ error }}</p>
         {% endif %}
+
     </div>
 </body>
 </html>

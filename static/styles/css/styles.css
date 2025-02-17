@@ -1,4 +1,4 @@
-/* Reset básico */
+/* Reset */
 * {
     margin: 0;
     padding: 0;
@@ -16,7 +16,7 @@ body {
 }
 
 /* Estiliza a caixa do formulário */
-.box {
+.form-box {
     background-color: #d8d8d8;
     display: flex;
     flex-direction: column;
@@ -60,7 +60,7 @@ button {
 }
 
 /* Estiliza o resultado */
-.resultado {
+.result-box {
     background-color: #d8d8d8;
     color: #1a1a1a;
     width: 90%;
