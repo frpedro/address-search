@@ -5,7 +5,7 @@
     box-sizing: border-box;
 }
 
-/* Centraliza a box na tela */
+/* Estilizações da página */
 body {
     background-color: rgba(17, 67, 107, 0.541);
     font-family: sans-serif;
@@ -29,15 +29,15 @@ body {
     box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2);
 }
 
-/* Estiliza os rótulos e título */
-h1, label {
+/* Estiliza os rótulos e títulos */
+h1, h2, label {
     color: #1a1a1a;
     text-align: center;
     margin-bottom: 40px;
     font-weight: 600;
 }
 
-/* Estiliza os inputs */
+/* Estiliza os inputs da página */
 input {
     width: 100%;
     padding: 10px;
@@ -48,7 +48,7 @@ input {
     outline: none;
 }
 
-/* Estiliza o botão */
+/* Estiliza o botão de submit do formulário */
 button {
     border: none;
     background-color: aliceblue;
@@ -59,40 +59,38 @@ button {
     width: 100%;
 }
 
-/* Estiliza o resultado */
+/* Estiliza a box que mostra resultados */
 .result-box {
     background-color: #d8d8d8;
     color: #1a1a1a;
     width: 90%;
     max-width: 400px;
     padding: 35px;
-    text-align: left;  /* Garante que o texto fique alinhado à esquerda */
+    text-align: left; 
     border-radius: 15px;
     box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2);
-    margin: 20px;  /* Centraliza horizontalmente */
+    margin: 20px;
     font-weight: 300;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;  /* Alinha o conteúdo à esquerda */
+    align-items: flex-start;  
 }
 
-h2 {
-    margin-bottom: 30px;
-}
-
+/* Estiliza a resposta da requisição */
 p {
     margin-bottom: 15px;
     font-weight: 200;
 }
 
-/* Responsividade */
-@media (max-width: 480px) {
-    .box, .resultado {
-        width: 90%;
-    }
-}
-
-.erro {
+/* Mensagem de erro */
+.error {
     margin-top: 10px;
     margin-left: 30px;
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+    .form-box, .result-box {
+        width: 90%;
+    }
 }
