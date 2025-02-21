@@ -5,7 +5,7 @@ import requests
 app = Flask(__name__)
 
 # Função que consulta o CEP usando a API ViaCEP
-def consultaCep(cep):
+def consulta_cep(cep):
     
     # Monta a URL da API ViaCEP com o CEP fornecido
     url = f"https://viacep.com.br/ws/{cep}/json/"
@@ -15,8 +15,8 @@ def consultaCep(cep):
     
     # Se a requisição for bem sucedida, retorna os dados do CEP em formato JSON
     if response.status_code == 200:
-        dadosCep = response.json()
-        return dadosCep
+        dados_cep = response.json()
+        return dados_cep
     
     # Se a requisição falhar, não retorna nada
     else:
@@ -34,15 +34,15 @@ def index():
         num = request.form.get("numero")
         
         # Realiza a consulta
-        resultadoConsultaCep = consultaCep(cep)
+        resultado_consulta_cep = consulta_cep(cep)
         
         # Se a consulta for bem-sucedida, exibe os dados encontrados (E os não encontrados com "Não disponível")
-        if resultadoConsultaCep:
-            rua = resultadoConsultaCep.get("logradouro", "Não disponível")
-            bairro = resultadoConsultaCep.get("bairro", "Não disponível")
-            cidade = resultadoConsultaCep.get("localidade", "Não disponível")
-            estado = resultadoConsultaCep.get("uf", "Não disponível")
-            cep1 = resultadoConsultaCep.get("cep", "Não disponível")
+        if resultado_consulta_cep:
+            rua = resultado_consulta_cep.get("logradouro", "Não disponível")
+            bairro = resultado_consulta_cep.get("bairro", "Não disponível")
+            cidade = resultado_consulta_cep.get("localidade", "Não disponível")
+            estado = resultado_consulta_cep.get("uf", "Não disponível")
+            cep1 = resultado_consulta_cep.get("cep", "Não disponível")
             
             # Retorna a página com os dados do endereço
             return render_template("index.html", 
@@ -53,8 +53,8 @@ def index():
         else:
             return render_template("index.html", error="cep não encontrado, tente novamente.")
     
-      # Renderiza o formulário vazio.
-      # Necessário para que a página rode corretamente.
+    # Renderiza o formulário vazio.
+    # Necessário para que a página rode corretamente.
     return render_template("index.html")
 
 # Roda a aplicação
